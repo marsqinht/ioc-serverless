@@ -2,10 +2,10 @@
 
 import 'core-js/actual/array/values'
 import { app } from './main'
-import { adapter } from './utils/platformAdapter/taobaoFc.adapter';
+import { taobaoFCAdapter } from './jowboy';
 
 
-const formatedHandler = adapter(app)
+const formatedHandler = taobaoFCAdapter(app)
 
 exports.main = (context) => {
   return formatedHandler(context);

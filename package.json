@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "esbuild src/main.ts  --bundle  --outfile=/Users/mars/Documents/Duiba.nosync/alitaotao_lvzhouzhongshu/c-client/server/one/index.js  --platform=node --target=node8 --watch"
   },
   "keywords": [],
   "author": "",

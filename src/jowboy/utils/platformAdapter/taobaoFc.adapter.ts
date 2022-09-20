@@ -69,7 +69,7 @@ const formatCtx = (context) => {
 //   resolver({ statusCode, headers, body, isBase64Encoded, multiValueHeaders });
 // };
 
-export const adapter = (app, opts = {}) => {
+export const taobaoFCAdapter = (app, opts = {}) => {
   const serverlessHandler = serverless(app, opts);
   return async (context) => {
     const ctx = formatCtx(context);
