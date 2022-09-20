@@ -1,23 +1,13 @@
-import "reflect-metadata";
-import { Container } from "inversify";
-import {  buildProviderModule } from "inversify-binding-decorators";
-import './modules/user/user.controller'
-import { InversifyExpressServer, getRouteInfo } from "inversify-express-utils";
-import { bodyParser } from "./jowboy";
 
 
-
-const container = new Container();
-container.load(buildProviderModule());
-
-const server = new InversifyExpressServer(container)
+import 'core-js/actual/array/values'
+import { app, container } from './container.config'
+import { taobaoFCAdapter } from './jowboy';
 
 
-server.setConfig((app) => { 
-  app.use(bodyParser);
-})
+const handlers = taobaoFCAdapter(app, container)
 
+console.log('handlers----', handlers);
+module.exports = handlers
 
-const app = server.build()
-
-export { container, app };
+// exports.main = (context: TaobaoContext) => formatedHandler(context);

@@ -1,1 +1,1 @@
-export { taobaoFCAdapter } from './taobaoFc.adapter'
+export { taobaoFCAdapter } from './taobaoFunction'
