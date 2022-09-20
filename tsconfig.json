@@ -10,6 +10,7 @@
       "esModuleInterop": true,
       "outDir": "./dist",
       "sourceMap": true,
+      "typeRoots": ["./node_modules/@types/"],
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*",]
 }

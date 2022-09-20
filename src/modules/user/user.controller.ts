@@ -1,36 +1,28 @@
 
 import { Request } from "express";
-import { injectable, inject } from "inversify";
-import { provide } from "inversify-binding-decorators";
-import { httpPost, requestBody } from "inversify-express-utils";
-import { Controller, Api } from "../../jowboy";
+import { requestBody } from "inversify-express-utils";
+import { Controller, Api, Inject } from "../../jowboy";
+import { UserService } from "./user.service";
 
 
-function CheckParam(): ParameterDecorator {
-
-  
-  return (target, paramIdentifier, index) => {
-     
-    // console.log('target :>> ', target, paramIdentifier, index);
-    return requestBody()
-  }; 
-}
 
 @Controller()
 export class UserController {
 
-  
+  @Inject(UserService) private userService: UserService
+
   @Api()
   async login(@requestBody() body: LoginDTO) {
 
-    // console.log('body :>> ', body);
+    this.userService.eat()
     return { user: 0 }
   }
 
-  @httpPost('getUserInfo')
-  async getUserInfo(@CheckParam() body: LoginDTO) {
+  @Api()
+  async getUserInfo(@requestBody() body: LoginDTO) {
 
-    // console.log('body :>> ', body);
+    this.userService.eat()
+
     return { user: 0 }
   }
 }

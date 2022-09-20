@@ -5,12 +5,12 @@ import { Container } from 'inversify';
 import serverless from '@serverless-devs/serverless-http';
 import { getRouteInfo } from "inversify-express-utils";
 import path from 'path';
-import { type TaobaoContext } from '../../interfaces';
+import { type TaobaoContext } from '../interfaces';
 
 
 const CONTEXT_HEADER_NAME = 'x-fc-http-context';
 
-const getRequestHeaders = (ctx) => {
+const getRequestHeaders = (ctx: TaobaoContext ) => {
   return {};
 };
 const getSocketPath = () => {
