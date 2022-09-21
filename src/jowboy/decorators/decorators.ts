@@ -15,7 +15,7 @@ export function Controller(path?: string | Middleware , ...middleware: Array<Mid
   }
   if (typeof path === 'string') return controller(path, ...middleware)
   
-  return controller('', ...[])
+  return controller('')
 }
 
 export function Post(path: string, ...middleware: Middleware[]): HandlerDecorator {

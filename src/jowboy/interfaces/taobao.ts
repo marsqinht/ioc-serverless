@@ -7,7 +7,6 @@ export interface TaobaoCloud {
   }
 }
 
-
 export interface TaobaoContext<T = Record<string, any>> {
   appKey: string
   appOwner: number

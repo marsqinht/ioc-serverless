@@ -7,7 +7,4 @@ import { taobaoFCAdapter } from './jowboy';
 
 const handlers = taobaoFCAdapter(app, container)
 
-console.log('handlers----', handlers);
 module.exports = handlers
-
-// exports.main = (context: TaobaoContext) => formatedHandler(context);

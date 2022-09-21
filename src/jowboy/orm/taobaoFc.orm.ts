@@ -2,9 +2,8 @@ import { BaseModel, Projection, Query, UpdateOperator } from "./base.orm";
 
 
 export class TaobaoModel<T> implements BaseModel {
-  constructor(private db: any, private collectionName: string) {
-  }
-
+  constructor(private db: any, private collectionName: string) { }
+  
   find(query: Query, projection: Projection = {}): Promise<T[]> {
     return this.db.collection(this.collectionName).find(query, projection)
   }
@@ -17,7 +16,7 @@ export class TaobaoModel<T> implements BaseModel {
     return res
   }
 
-  async findById(id: string, projection?: Projection): Promise<any> {
+  async findById(id: string, projection?: Projection): Promise<T | undefined> {
     return this.findOne({ _id: id }, projection) 
   }
 
@@ -33,7 +32,7 @@ export class TaobaoModel<T> implements BaseModel {
     return this.db.collection(this.collectionName).updateMany(query, updateOperator)
   }
 
-  delete(filter: Query): Promise<any> {
+  delete(filter: Query): Promise<number> {
     return this.db.collection(this.collectionName).deleteMany(filter)
   }
 
