@@ -1,7 +1,6 @@
-
-import { Request } from "express";
 import { requestBody } from "inversify-express-utils";
 import { Controller, Api, Inject } from "../../jowboy";
+import { LoginDTO } from "./user.dto";
 import { UserService } from "./user.service";
 
 

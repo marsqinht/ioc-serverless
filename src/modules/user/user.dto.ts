@@ -1,5 +1,5 @@
 
 
-class LoginDTO {
+export class LoginDTO {
   activityId: string
 } 

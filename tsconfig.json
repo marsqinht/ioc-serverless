@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
       "target": "es5",
-      "lib": ["es6", "dom"],
+      "lib": ["es6", "es2021"],
       "types": ["reflect-metadata"],
       "module": "commonjs",
       "moduleResolution": "node",
@@ -9,8 +9,8 @@
       "emitDecoratorMetadata": true,
       "esModuleInterop": true,
       "outDir": "./dist",
+      "baseUrl": "./",
       "sourceMap": true,
-      "typeRoots": ["./node_modules/@types/"],
   },
   "include": ["./src/**/*",]
 }

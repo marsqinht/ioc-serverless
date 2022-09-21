@@ -27,6 +27,7 @@ export interface UpdateOperator {
   $pull?: { [key: string]: any }
   $push?: { [key: string]: any }
   $bit?: {
+    // eslint-disable-next-line no-unused-vars
     [key: string]: { [key in 'and' | 'or' | 'xor']?: number }
   }
 }

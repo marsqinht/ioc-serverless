@@ -3,7 +3,7 @@ import { BaseModel, Projection, Query, UpdateOperator } from "./base.orm";
 
 export class TaobaoModel<T> implements BaseModel {
   constructor(private db: any, private collectionName: string) { }
-  
+
   find(query: Query, projection: Projection = {}): Promise<T[]> {
     return this.db.collection(this.collectionName).find(query, projection)
   }
@@ -17,7 +17,7 @@ export class TaobaoModel<T> implements BaseModel {
   }
 
   async findById(id: string, projection?: Projection): Promise<T | undefined> {
-    return this.findOne({ _id: id }, projection) 
+    return this.findOne({ _id: id }, projection)
   }
 
   insertOne(document: T): Promise<string> {
