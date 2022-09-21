@@ -1,3 +1,6 @@
+import { Container } from 'inversify'
+import getDecorators from 'inversify-inject-decorators';
+import { TYPES } from './types';
 export { bodyParser, DatabseMiddleware } from './middlewares'
 
 export { taobaoFCAdapter } from './platformAdapter'
@@ -8,3 +11,17 @@ export { Controller, Api, Provide, Inject, Entity, InjectEntityModel } from './d
 
 
 export { TaobaoModel } from './orm'
+
+
+export const container = new Container()
+
+console.log('bind :>> ');
+container.bind<string>(TYPES.DatabaseType).toConstantValue('undefined');
+
+const { lazyInject } = getDecorators(container);
+
+export {
+  lazyInject
+}
+
+

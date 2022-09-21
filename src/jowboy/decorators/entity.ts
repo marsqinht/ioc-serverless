@@ -1,20 +1,32 @@
-import { interfaces,inject } from 'inversify';
-import {  Provide } from './decorators';
-
-
-export function Entity(name: string) {
-  console.log('name :>> ', name);
+import { interfaces } from 'inversify';
+import { container } from '..';
+import { TaobaoModel } from '../orm';
+import { TYPES } from '../types';
+import { Inject, Provide } from './decorators';
+export function Entity(collectionName: string) {
 
   return (target: NewableFunction): void => {
-
-    console.log('target :>> ', target);
-    Provide(target)(target)
+    container.bind<string>(target).toConstantValue(collectionName)
+    Provide(collectionName)(target)
   }
 }
 
 
 export function InjectEntityModel(entity: interfaces.ServiceIdentifier) {
-  console.log('entity :>> ', entity);
 
-  return inject(entity)
+  // console.log('object :>> ', entity.name);
+
+
+
+  return function (a, b, c) {
+    // container.bind<string>(a).toConstantValue(container.get(entity) as string)
+    // @ts-ignore
+    // if (!container.isBound(TYPES.ColletionName)) {
+    //   container.bind(TYPES.ColletionName).toDynamicValue((context: interfaces.Context) => {
+    //     console.log('context :>> ', entity);
+    //     return context.container.get(entity)
+    //   })
+    // }
+    Inject(TaobaoModel)(a, b, c)
+  }
 }

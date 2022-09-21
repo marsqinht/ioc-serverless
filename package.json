@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "esbuild src/main.ts  --bundle  --outfile=/Users/mars/Documents/Duiba.nosync/alitaotao_lvzhouzhongshu/c-client/server/one/index.js  --platform=node --target=node8 --watch",
+    "dev": "esbuild src/main.ts  --bundle  --outfile=/Users/qinhaitao/Documents/Duiba/test/server/one/index.js  --platform=node --target=node8 --watch --sourcemap",
     "build": "node ./scripts/build.js",
     "eslint": "eslint 'src/**/*.{ts,tsx,js,jsx}'  --cache",
     "eslint:fix": "npm run eslint -- --fix",
@@ -26,8 +26,10 @@
     "inversify": "^6.0.1",
     "inversify-binding-decorators": "^4.0.0",
     "inversify-express-utils": "^6.4.3",
+    "inversify-inject-decorators": "^3.1.0",
     "inversify-logger-middleware": "^3.1.0",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "source-map-support": "^0.5.21"
   },
   "lint-staged": {
     "src/*.{js,jsx,ts,tsx}": [

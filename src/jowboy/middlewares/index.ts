@@ -1,2 +1,2 @@
 export { bodyParser } from './bodyParse'
-export { DatabseMiddleware } from './database'
+export { DatabseMiddleware } from './databaseMiddleware'

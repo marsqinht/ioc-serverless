@@ -11,3 +11,14 @@ export class User {
   updateTime: number
   createDay: string
 }
+
+@Entity('c_awards_info')
+export class AwardRecord {
+  _id: string
+  activityId: string
+  openId: string
+  userNick?: string
+  createTime: number
+  updateTime: number
+  createDay: string
+}

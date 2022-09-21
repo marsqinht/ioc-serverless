@@ -1,6 +1,9 @@
+/* eslint-disable import/first */
+require('source-map-support').install()
 import 'core-js/actual/array/values'
-import { app, container } from './container.config'
-import { taobaoFCAdapter } from 'src/jowboy'
+import { app } from './container.config'
+import { taobaoFCAdapter, container } from 'src/jowboy'
+
 const handlers = taobaoFCAdapter(app, container)
 
 module.exports = handlers

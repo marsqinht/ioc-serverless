@@ -1,19 +1,17 @@
 
+import { named } from 'inversify';
 import { Inject, Provide } from '../decorators'
-import { TYPES } from '../middlewares/database'
+import { TYPES } from '../types';
 import { BaseModel, Projection, Query, UpdateOperator } from './base.orm'
+
 
 @Provide(TaobaoModel)
 export class TaobaoModel<T = Record<string, any>> implements BaseModel {
-  collectionName: any
-  db: any
-  // constructor(@Inject(TYPES.DatabaseType) private db: any) {
-
-  // }
-
+  constructor(@Inject(TYPES.DatabaseType) private db: any, @Inject(TYPES.ColletionName) private collectionName: string) { }
 
   find(query: Query, projection: Projection = {}): Promise<T[]> {
-    return this.db.collection(this.collectionName || 'c_user').find(query, projection)
+    console.log('this.collectionName', this.collectionName);
+    return this.db.collection(this.collectionName).find(query, projection)
   }
 
   async findOne(query: Query, projection?: Projection): Promise<T | undefined> {
