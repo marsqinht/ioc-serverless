@@ -43,7 +43,7 @@ const mapContextToHttpRequest = (ctx: TaobaoContext) => {
     fcContext: ctx,
     httpMethod: 'post',
     // 把context 挂在到req.requestContext上
-    requestContext: {},
+    requestContext: ctx,
   }
 }
 

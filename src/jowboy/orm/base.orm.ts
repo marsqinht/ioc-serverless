@@ -80,7 +80,7 @@ export interface IQuerySelector {
   $bitsAnySet?: any
 }
 
-export abstract class BaseModel<T = any> {
+export abstract class BaseModel<T = Record<string, any>> {
   abstract findOne(
     query: Query,
     projection?: Projection
@@ -99,7 +99,7 @@ export abstract class BaseModel<T = any> {
     updateOperator?: UpdateOperator
   ): Promise<number>
 
-  abstract delete(query: Query): Promise<any>
+  abstract delete(query: Query): Promise<number>
 
   abstract count(query: Query, options?: Record<string, any>): Promise<number>
 

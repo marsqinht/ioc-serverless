@@ -1,4 +1,5 @@
 export interface TaobaoCloud {
+  db: any
   dataspace: {
     context: {
       handler: string

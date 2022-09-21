@@ -1,22 +1,25 @@
-import { requestBody } from 'inversify-express-utils'
-import { Controller, Api, Inject } from 'src/jowboy'
+import { BaseHttpController, requestBody } from 'inversify-express-utils'
+import { Controller, Api, Inject, DatabseMiddleware } from 'src/jowboy'
 import { LoginDTO } from './user.dto'
 import { UserService } from './user.service'
-
 @Controller()
-export class UserController {
-  @Inject(UserService)
-  private userService: UserService
+export class UserController extends BaseHttpController {
 
-  @Api()
-  async login(@requestBody() body: LoginDTO) {
-    this.userService.eat()
-    return { user: 0 }
+
+  constructor(@Inject(UserService) private userService: UserService) {
+    super()
   }
 
-  @Api()
+  // @Api()
+  // async login(@requestBody() body: LoginDTO) {
+  //   this.userService.eat()
+  //   return { user: 0 }
+  // }
+
+  @Api('getUserInfo', DatabseMiddleware)
   async getUserInfo(@requestBody() body: LoginDTO) {
-    this.userService.eat()
+
+    await this.userService.eat()
 
     return { user: 0 }
   }

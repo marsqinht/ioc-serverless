@@ -1,10 +1,19 @@
+
+import { Inject, Provide } from '../decorators'
+import { TYPES } from '../middlewares/database'
 import { BaseModel, Projection, Query, UpdateOperator } from './base.orm'
 
-export class TaobaoModel<T> implements BaseModel {
-  constructor(private db: any, private collectionName: string) {}
+@Provide(TaobaoModel)
+export class TaobaoModel<T = Record<string, any>> implements BaseModel {
+  collectionName: any
+  db: any
+  // constructor(@Inject(TYPES.DatabaseType) private db: any) {
+
+  // }
+
 
   find(query: Query, projection: Projection = {}): Promise<T[]> {
-    return this.db.collection(this.collectionName).find(query, projection)
+    return this.db.collection(this.collectionName || 'c_user').find(query, projection)
   }
 
   async findOne(query: Query, projection?: Projection): Promise<T | undefined> {
