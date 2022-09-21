@@ -4,16 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preinstall": "node ./scripts/preinstall.js",
+    "dev": "esbuild src/main.ts  --bundle  --outfile=/Users/mars/Documents/Duiba.nosync/alitaotao_lvzhouzhongshu/c-client/server/one/index.js  --platform=node --target=node8 --watch",
     "build": "node ./scripts/build.js",
-    "eslint": "eslint 'src/**/*.{ts,tsx,js,jsx}' --ext --cache",
+    "eslint": "eslint 'src/**/*.{ts,tsx,js,jsx}'  --cache",
     "eslint:fix": "npm run eslint -- --fix",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "lint": "npm run eslint && npm run prettier",
     "lint:fix": "npm run eslint:fix && npm run prettier:fix",
-    "prepare": "husky install",
-    "test": "echo 1"
+    "preinstall": "node ./scripts/preinstall.js",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",

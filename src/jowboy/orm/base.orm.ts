@@ -80,10 +80,11 @@ export interface IQuerySelector {
   $bitsAnySet?: any
 }
 
-
 export abstract class BaseModel<T = any> {
-
-  abstract findOne(query: Query, projection?: Projection): Promise<T | undefined>
+  abstract findOne(
+    query: Query,
+    projection?: Projection
+  ): Promise<T | undefined>
 
   abstract findById(id: string, projection?: Projection): Promise<T | undefined>
 
@@ -93,12 +94,17 @@ export abstract class BaseModel<T = any> {
 
   abstract insertMany(documents: T[]): Promise<string[]>
 
-  abstract update(query: Query, updateOperator?: UpdateOperator): Promise<number>
+  abstract update(
+    query: Query,
+    updateOperator?: UpdateOperator
+  ): Promise<number>
 
   abstract delete(query: Query): Promise<any>
 
   abstract count(query: Query, options?: Record<string, any>): Promise<number>
 
-  abstract aggregate(pipeline: Record<string, any> | Record<string, any>[], options?: Record<string, any>): Promise<any>
-
+  abstract aggregate(
+    pipeline: Record<string, any> | Record<string, any>[],
+    options?: Record<string, any>
+  ): Promise<any>
 }

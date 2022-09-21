@@ -1,4 +1,3 @@
-
 export interface TaobaoCloud {
   dataspace: {
     context: {

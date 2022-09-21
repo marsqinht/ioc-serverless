@@ -1,6 +1,6 @@
 module.exports = {
   env: {
-    browser: true,
+    node: true,
     es2021: true,
   },
   extends: ['standard', 'prettier'],
@@ -14,6 +14,7 @@ module.exports = {
     'no-use-before-define': 0,
     'no-redeclare': 0,
     'no-useless-constructor': 0,
+    'import/no-absolute-path': 0,
+    quotes: ['error', 'single'],
   },
-};
-
+}

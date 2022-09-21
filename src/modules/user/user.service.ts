@@ -1,13 +1,12 @@
-import { Provide } from "../../jowboy";
+import { Provide } from '../../jowboy'
 
 @Provide(UserService)
 export class UserService {
-
   constructor() {
-    console.log('UserService init:>> ');
+    console.log('UserService init:>> ')
   }
 
   eat() {
-    console.log('eat :>> ');
+    console.log('eat :>> ')
   }
 }

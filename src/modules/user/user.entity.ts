@@ -1,7 +1,7 @@
-
 // import { Contains, IsInt, Length, IsEmail, IsFQDN, IsDate, Min, Max } from "class-validator";
+import { Provide } from '/src/jowboy'
 
-
+@Provide(User)
 export class User {
   _id: string
   activityId: string
@@ -11,4 +11,3 @@ export class User {
   updateTime: number
   createDay: string
 }
-

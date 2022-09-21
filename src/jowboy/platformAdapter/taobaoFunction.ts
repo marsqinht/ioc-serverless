@@ -1,4 +1,3 @@
-
 import 'core-js/actual/array/flat'
 import { Express } from 'express'
 import { Container } from 'inversify'
@@ -16,11 +15,7 @@ const getSocketPath = () => {
   const socketPathSuffix = Math.random().toString(36).substring(2, 15)
   /* istanbul ignore if */ /* only running tests on Linux; Window support is for local dev only */
   if (/^win/.test(process.platform)) {
-    return path.join(
-      '\\\\?\\pipe',
-      process.cwd(),
-      `server-${socketPathSuffix}`
-    )
+    return path.join('\\\\?\\pipe', process.cwd(), `server-${socketPathSuffix}`)
   } else {
     return `/tmp/server-${socketPathSuffix}.sock`
   }
@@ -29,9 +24,7 @@ const getSocketPath = () => {
 const mapContextToHttpRequest = (ctx: TaobaoContext) => {
   const headers = getRequestHeaders(ctx)
   // const request = ctx;
-  headers[CONTEXT_HEADER_NAME] = encodeURIComponent(
-    JSON.stringify(ctx)
-  )
+  headers[CONTEXT_HEADER_NAME] = encodeURIComponent(JSON.stringify(ctx))
 
   return {
     method: 'post',
@@ -50,7 +43,7 @@ const mapContextToHttpRequest = (ctx: TaobaoContext) => {
     fcContext: ctx,
     httpMethod: 'post',
     // 把context 挂在到req.requestContext上
-    requestContext: {}
+    requestContext: {},
   }
 }
 
@@ -58,7 +51,7 @@ const formatCtx = (context: TaobaoContext) => {
   return {
     request: mapContextToHttpRequest(context),
     response: {},
-    context
+    context,
   }
 }
 
@@ -70,7 +63,11 @@ const formatCtx = (context: TaobaoContext) => {
 
 export type TapbaoHandleRequest = (ctx: TaobaoContext) => Promise<any>
 
-export const taobaoFCAdapter = (app: Express.Application, container: Container, opts = {}) => {
+export const taobaoFCAdapter = (
+  app: Express.Application,
+  container: Container,
+  opts = {}
+) => {
   const serverlessHandler = serverless(app, opts)
 
   const handleRequest: TapbaoHandleRequest = async (context: TaobaoContext) => {
@@ -87,14 +84,17 @@ export const taobaoFCAdapter = (app: Express.Application, container: Container, 
       console.log('err :>> ', err)
       // 异常报错
       return {
-        sucess: false
+        sucess: false,
       }
     }
   }
 
   const routers = mapperRouter(container)
 
-  const handlers = routers.reduce((pre, curr) => ({ ...pre, [curr]: handleRequest }), {} as Record<string, TapbaoHandleRequest>)
+  const handlers = routers.reduce(
+    (pre, curr) => ({ ...pre, [curr]: handleRequest }),
+    {} as Record<string, TapbaoHandleRequest>
+  )
 
   if (handlers.$functionInfo) {
     delete handlers.$functionInfo
@@ -106,7 +106,10 @@ export const taobaoFCAdapter = (app: Express.Application, container: Container, 
 export const mapperRouter = (container: Container) => {
   const routers = getRouteInfo(container)
 
-  const stringRoutes = routers.map(v => v.endpoints.map(j => j.route)).flat().map(v => v.replace('POST ', ''))
+  const stringRoutes = routers
+    .map((v) => v.endpoints.map((j) => j.route))
+    .flat()
+    .map((v) => v.replace('POST ', ''))
 
   return stringRoutes
 }

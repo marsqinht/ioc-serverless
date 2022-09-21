@@ -1,9 +1,10 @@
-const esbuild = require('esbuild');
-const path = require('path');
+const esbuild = require('esbuild')
+const path = require('path')
 
-(async () => {
-  const entryPath = path.resolve(__dirname, '../src/main.ts');
-  const outfilePath = path.resolve(__dirname, '../dist/index.js');
+;(async () => {
+  const entryPath = path.resolve(__dirname, '../src/main.ts')
+  const outfilePath = path.resolve(__dirname, '../dist/index.js')
+
   const config = {
     platform: 'node',
     target: 'node8',
@@ -11,8 +12,7 @@ const path = require('path');
     entryPoints: [entryPath],
     bundle: true,
     outfile: outfilePath,
-  };
+  }
 
-  esbuild.build(config);
-})();
-
+  esbuild.build(config)
+})()

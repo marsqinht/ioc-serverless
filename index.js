@@ -1,3 +1,3 @@
-const a = require("./dist/index");
+const a = require('./dist/index')
 
-console.log("a :>> ", a);
+console.log('a :>> ', a)

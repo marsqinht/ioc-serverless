@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
-      "target": "es5",
-      "lib": ["es6", "es2021"],
-      "types": ["reflect-metadata"],
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "experimentalDecorators": true,
-      "emitDecoratorMetadata": true,
-      "esModuleInterop": true,
-      "outDir": "./dist",
-      "baseUrl": "./",
-      "sourceMap": true,
+    "target": "es5",
+    "lib": ["es6", "es2021"],
+    "types": ["reflect-metadata"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "sourceMap": true
   },
-  "include": ["./src/**/*",]
+  "include": ["./src/**/*"]
 }
