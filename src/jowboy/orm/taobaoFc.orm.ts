@@ -7,7 +7,10 @@ import { BaseModel, Projection, Query, UpdateOperator } from './base.orm'
 
 @Provide(TaobaoModel)
 export class TaobaoModel<T = Record<string, any>> implements BaseModel {
-  constructor(@Inject(TYPES.DatabaseType) private db: any, @Inject(TYPES.ColletionName) private collectionName: string) { }
+  constructor(@Inject(TYPES.DatabaseType) private db: any, @Inject(TYPES.ColletionName) private collectionName: string) {
+    // console.log(1, Reflect.getMetadata('design:type', TaobaoModel, 'constructor'));
+    console.log('collectionName :>> ', collectionName);
+  }
 
   find(query: Query, projection: Projection = {}): Promise<T[]> {
     console.log('this.collectionName', this.collectionName);

@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@anatine/esbuild-decorators': ^0.2.19
   '@serverless-devs/serverless-http': ^3.0.1
   '@types/express': ^4.17.14
   '@types/node': ^18.7.18
@@ -42,6 +43,7 @@ dependencies:
   source-map-support: 0.5.21
 
 devDependencies:
+  '@anatine/esbuild-decorators': 0.2.19_esbuild@0.15.8
   '@types/express': 4.17.14
   '@types/node': 18.7.18
   '@typescript-eslint/eslint-plugin': 5.38.0_wsb62dxj2oqwgas4kadjymcmry
@@ -59,6 +61,14 @@ devDependencies:
   typescript: registry.npmmirror.com/typescript/4.8.3
 
 packages:
+
+  /@anatine/esbuild-decorators/0.2.19_esbuild@0.15.8:
+    resolution: {integrity: sha512-pyj6ULyMacyzpDqlnbS2OCkOqxcVgk8IqiTMRJ5CrsF8Yl1azvlX/AM6xWR8UzHKUYDlWOw5mOpos3+7KKR0Lw==}
+    peerDependencies:
+      esbuild: ~0.14.29
+    dependencies:
+      esbuild: registry.npmmirror.com/esbuild/0.15.8
+    dev: true
 
   /@esbuild/android-arm/0.15.8:
     resolution: {integrity: sha512-CyEWALmn+no/lbgbAJsbuuhT8s2J19EJGHkeyAwjbFJMrj80KJ9zuYsoAvidPTU7BgBf87r/sgae8Tw0dbOc4Q==}

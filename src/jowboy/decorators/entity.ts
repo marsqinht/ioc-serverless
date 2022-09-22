@@ -3,6 +3,7 @@ import { container } from '..';
 import { TaobaoModel } from '../orm';
 import { TYPES } from '../types';
 import { Inject, Provide } from './decorators';
+
 export function Entity(collectionName: string) {
 
   return (target: NewableFunction): void => {
@@ -18,15 +19,24 @@ export function InjectEntityModel(entity: interfaces.ServiceIdentifier) {
 
 
 
-  return function (a, b, c) {
+  return function (target: any, key: string) {
+
+    // console.log('a,b,c :>> ', target, key);
     // container.bind<string>(a).toConstantValue(container.get(entity) as string)
     // @ts-ignore
-    // if (!container.isBound(TYPES.ColletionName)) {
-    //   container.bind(TYPES.ColletionName).toDynamicValue((context: interfaces.Context) => {
-    //     console.log('context :>> ', entity);
-    //     return context.container.get(entity)
-    //   })
-    // }
-    Inject(TaobaoModel)(a, b, c)
+
+
+    const A = Reflect.getMetadata('design:type', target, key)
+    const b = Reflect.getMetadata('design:paramtypes', target);
+    // Reflect.defineMetadata('1', )
+    console.log('design:type :>> ', A, b);
+
+    if (!container.isBound(TYPES.ColletionName)) {
+      container.bind(TYPES.ColletionName).toDynamicValue((context: interfaces.Context) => {
+
+        return context.container.get(entity)
+      })
+    }
+    Inject(A)(target, key)
   }
 }
